@@ -18,7 +18,7 @@ public class SecurityConfiguration {
     }
 	
 	protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/login", "/h2-console/**").permitAll()
+        http.authorizeRequests().antMatchers("/login","/h2-console/**").permitAll()
                 .antMatchers("/", "/*todo*/**").access("hasRole('USER')").and()
                 .formLogin();
         

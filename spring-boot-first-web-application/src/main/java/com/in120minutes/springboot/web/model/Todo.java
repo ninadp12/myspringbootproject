@@ -1,10 +1,17 @@
 package com.in120minutes.springboot.web.model;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.Size;
 
 import java.util.Date;
 
+@Entity
 public class Todo {
-    private int id;
+	
+	@Id
+	@GeneratedValue
+    private long id;
     private String user;
     
     @Size(min=10,message="Enter at least 10 Characters...")
@@ -16,7 +23,7 @@ public class Todo {
     	super();
     }
 
-    public Todo(int id, String user, String desc, Date targetDate,
+    public Todo(long id, String user, String desc, Date targetDate,
             boolean isDone) {
         super();
         this.id = id;
@@ -26,11 +33,11 @@ public class Todo {
         this.isDone = isDone;
     }
     
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -69,9 +76,9 @@ public class Todo {
     @Override
     public int hashCode() {
         final int prime = 31;
-        int result = 1;
-        result = prime * result + id;
-        return result;
+        long result = 1;
+        result = (prime * result + id);
+        return (int) result;
     }
 
     @Override
